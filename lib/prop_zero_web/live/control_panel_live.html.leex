@@ -1,0 +1,14 @@
+<%= case @live_action do 
+  :dashboard -> 
+    live_component(@socket, DashboardComponent, assigns)
+
+  :new_event -> 
+    
+    debug(assigns)
+    # uncomment this line to see the bug. 
+    live_component(@socket, NewEventComponent, id: "new-event") 
+
+  _ -> 
+    "@live_action #{@live_action} not handled"
+end
+%>

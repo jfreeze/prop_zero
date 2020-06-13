@@ -1,0 +1,29 @@
+<div x-data="{ offCanvasMenu : false }" class="flex h-screen overflow-hidden bg-gray-100">
+</div>
+<div class="flex-shrink-0 w-14">
+  <!-- Dummy element to force sidebar to shrink to fit close icon -->
+</div>
+
+<!-- Static sidebar for desktop -->
+<div class="hidden md:flex md:flex-shrink-0">
+  <div class="flex flex-col w-64">
+    <div class="flex flex-col flex-1 h-0 overflow-y-auto">
+      <!-- Sidebar component, swap this element with another sidebar if you like -->
+
+      <nav class="flex-1 px-2 py-4 bg-gray-800">
+        <%= live_patch(to: Routes.control_panel_path(@socket, :dashboard)) do %>
+        Dashboard
+        <% end %>
+      </nav>
+    </div>
+  </div>
+</div>
+<div class="flex flex-col flex-1 w-0 overflow-hidden">
+
+  <main class="relative z-0 flex-1 py-6 overflow-y-auto focus:outline-none" tabindex="0">
+    <div class="px-4 mx-auto max-w-7xl sm:px-6 md:px-8">
+      <%= @inner_content %>
+    </div>
+  </main>
+</div>
+</div>
