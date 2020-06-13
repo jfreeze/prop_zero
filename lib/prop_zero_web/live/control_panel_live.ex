@@ -14,13 +14,13 @@ defmodule PropZeroWeb.ControlPanelLive do
   end
 
   @impl true
-  def handle_event("new-event", _params, socket) do
-    {:noreply, push_patch(socket, to: Routes.control_panel_path(socket, :new_event))}
+  def handle_params(params, _url, socket) do
+    {:noreply, apply_action(socket, socket.assigns.live_action, params)}
   end
 
   @impl true
-  def handle_params(params, _url, socket) do
-    {:noreply, apply_action(socket, socket.assigns.live_action, params)}
+  def handle_event("new-event", _params, socket) do
+    {:noreply, push_patch(socket, to: Routes.control_panel_path(socket, :new_event))}
   end
 
   defp apply_action(socket, :dashboard, _params) do
