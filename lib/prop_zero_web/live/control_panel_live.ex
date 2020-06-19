@@ -9,6 +9,7 @@ defmodule PropZeroWeb.ControlPanelLive do
     {:ok,
      assign(socket,
        event: nil,
+       counter: 0,
        events: []
      )}
   end
@@ -20,23 +21,32 @@ defmodule PropZeroWeb.ControlPanelLive do
 
   @impl true
   def handle_event("new-event", _params, socket) do
+    IO.puts("\n\n---- new-event")
     {:noreply, push_patch(socket, to: Routes.control_panel_path(socket, :new_event))}
+  end
+
+  def handle_event(_, _params, socket) do
+    IO.puts("\n\n how did we get here?")
+    {:noreply, socket}
   end
 
   defp apply_action(socket, :dashboard, _params) do
     socket
     |> assign(:page_title, "Dashboard")
     |> assign(:event, nil)
+    |> update(:counter, &(&1 + 1))
   end
 
   defp apply_action(socket, :new_event, _params) do
     socket
     |> assign(:page_title, "Create Event")
     |> assign(:event, nil)
+    |> update(:counter, &(&1 + 1))
   end
 
   defp apply_action(socket, _, _) do
     socket
+    |> update(:counter, &(&1 + 1))
   end
 
   # For dev
