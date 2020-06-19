@@ -34,19 +34,21 @@ defmodule PropZeroWeb.ControlPanelLive do
     socket
     |> assign(:page_title, "Dashboard")
     |> assign(:event, nil)
-    |> update(:counter, &(&1 + 1))
+
+    # |> update(:counter, &(&1 + 1))
   end
 
   defp apply_action(socket, :new_event, _params) do
     socket
     |> assign(:page_title, "Create Event")
     |> assign(:event, nil)
-    |> update(:counter, &(&1 + 1))
+
+    # |> update(:counter, &(&1 + 1))
   end
 
   defp apply_action(socket, _, _) do
     socket
-    |> update(:counter, &(&1 + 1))
+    # |> update(:counter, &(&1 + 1))
   end
 
   # For dev

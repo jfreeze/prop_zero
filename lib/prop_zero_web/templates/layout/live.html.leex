@@ -1,10 +1,18 @@
 <div>
   <%= live_patch("Dashboard", to: Routes.control_panel_path(@socket, :dashboard)) %>
 
-  <%= live_patch "New Event", to: Routes.control_panel_path(@socket, :new_event) %>
+  <br><br>
+  <div>
+    <p>Clicking New Event link below takes you to the Event page.</p>
+    <%= live_patch "New Event (via live_patch)", to: Routes.control_panel_path(@socket, :new_event) %>
+  </div>
 
   <main>
-    <%= @inner_content %>
+    <br><br>
+    <div>
+      <p>Clicking CREATE EVENT should take you to the Event page</p>
+      <%= @inner_content %>
+    </div>
   </main>
 </div>
 </div>
